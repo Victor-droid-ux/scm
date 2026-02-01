@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 // Define Props for RootLayout
 type RootLayoutProps = {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>; // Adjusted for async params
+  params: Promise<{ locale: Locale }>;
 };
 
 // Main Layout Component
@@ -53,7 +53,7 @@ export default async function RootLayout({
   children,
   params,
 }: RootLayoutProps) {
-  const { locale } = await params; // Await the resolution of params
+  const { locale } = await params;
 
   // Validate locale
   if (!routing.locales.includes(locale)) {

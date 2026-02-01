@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 
@@ -18,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html lang="en">
       <body className={`${nunito.className} antialiased`}>{children}</body>
     </html>
   );
