@@ -2,10 +2,11 @@
 import { getCollection } from "@/lib/collections";
 import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
+export const runtime = "nodejs";
 
 export async function DELETE(
   request: Request,
-  { params }: { params: Promise<{ id: string }> } // Make params asynchronous
+  { params }: { params: Promise<{ id: string }> }, // Make params asynchronous
 ) {
   try {
     const { id } = await params; // Await params to extract the 'id'
@@ -20,7 +21,7 @@ export async function DELETE(
     if (result.deletedCount === 0) {
       return NextResponse.json(
         { error: "Document not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -32,7 +33,7 @@ export async function DELETE(
         error: "Delete operation failed",
         details: error instanceof Error ? error.message : "Unknown error",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -40,7 +41,7 @@ export async function DELETE(
 // Optional: Add GET handler if you want to fetch single submission
 export async function GET(
   request: Request,
-  { params }: { params: Promise<{ id: string }> } // Make params asynchronous
+  { params }: { params: Promise<{ id: string }> }, // Make params asynchronous
 ) {
   try {
     const { id } = await params; // Await params to extract the 'id'
@@ -51,7 +52,7 @@ export async function GET(
     if (!submission) {
       return NextResponse.json(
         { error: "Document not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -71,7 +72,7 @@ export async function GET(
         error: "Database operation failed",
         details: error instanceof Error ? error.message : "Unknown error",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

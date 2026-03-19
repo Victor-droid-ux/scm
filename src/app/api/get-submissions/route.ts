@@ -1,5 +1,6 @@
 import { getCollection } from "@/lib/collections";
 import { NextResponse } from "next/server";
+export const runtime = "nodejs";
 
 export async function GET() {
   try {
@@ -26,7 +27,7 @@ export async function GET() {
         error: "Database operation failed",
         details: error instanceof Error ? error.message : "Unknown error",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
