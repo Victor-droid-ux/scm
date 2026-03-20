@@ -14,13 +14,18 @@ export const metadata: Metadata = {
     "TokenPocket is a secure multi-chain crypto wallet for storing, sending, and managing digital assets.",
 };
 
-export default function RootLayout({
-  children,
-}: {
+type Locale = "en" | "fr" | "de" | "ar" | "es" | "ru" | "zh" | "fa" | "tr";
+
+type Props = {
   children: React.ReactNode;
-}) {
+  params: Promise<{ locale: Locale }>;
+};
+
+export default async function RootLayout({ children, params }: Props) {
+  const { locale } = await params;
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
